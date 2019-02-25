@@ -17,7 +17,7 @@ using NAudio.Wave.SampleProviders;
 
 using Microsoft.Win32;
 
-
+using System.Windows.Threading;
 
 namespace Reproductor
 {
@@ -30,10 +30,28 @@ namespace Reproductor
         //Nuestra comunicacion con la tarjeta de sonido
         WaveOutEvent output;
 
+        DispatcherTimer timer;
+
         public MainWindow()
         {
             InitializeComponent();
             LLenarComboSalida();
+
+
+            //inicializar Timer
+            //establecer tiempo entre ejecuciones
+            //establecer lo que se va a ejecutar
+            timer = new DispatcherTimer();
+            timer.Interval = TimeSpan.FromMilliseconds(500);
+            timer.Tick += Timer_Tick;
+        }
+
+        private void Timer_Tick(object sender, EventArgs e)
+        {
+            if (reader != null)
+            {
+                lblTiempoActual.Text = reader.CurrentTime.ToString().Substring(0, 8);
+            }
         }
 
         private void LLenarComboSalida()
@@ -85,7 +103,11 @@ namespace Reproductor
                 btnReproducir.IsEnabled = false;
 
                 //tiempo final
-                lblTiempoActual.Text = reader.TotalTime.ToString().Substring(0,8);
+                lblTiempoFinal.Text = reader.TotalTime.ToString().Substring(0,8);
+
+                lblTiempoActual.Text = reader.CurrentTime.ToString().Substring(0, 8);
+
+                timer.Start();
             }
             
 
@@ -95,6 +117,7 @@ namespace Reproductor
         {
             reader.Dispose();
             output.Dispose();
+            timer.Stop();
         }
 
 
