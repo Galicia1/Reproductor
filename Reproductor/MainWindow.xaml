@@ -18,10 +18,15 @@
                 Thumb.DragCompleted="sldReproduccion_DragCompleted"/>
         <TextBlock x:Name="lblTiempoActual" HorizontalAlignment="Left" Margin="10,139,0,0" TextWrapping="Wrap" Text="00:00" VerticalAlignment="Top"/>
         <TextBlock x:Name="lblTiempoFinal" HorizontalAlignment="Left" Margin="448,139,0,0" TextWrapping="Wrap" Text="00:00" VerticalAlignment="Top"/>
-        <Slider x:Name="sldVolumen" HorizontalAlignment="Left" Margin="546,31,0,0" VerticalAlignment="Top" Width="28" Orientation="Vertical" Height="139"/>
+        <Slider x:Name="sldVolumen" HorizontalAlignment="Left" Margin="546,31,0,0" VerticalAlignment="Top" Width="28" Orientation="Vertical" Height="139" Maximum="1" ValueChanged="sldVolumen_ValueChanged" Value="0.5"/>
         <TextBlock HorizontalAlignment="Left" Margin="492,33,0,0" TextWrapping="Wrap" Text="Volumen." VerticalAlignment="Top"/>
         <TextBlock x:Name="lblPorcentajeVolumen" HorizontalAlignment="Left" Margin="525,154,0,0" TextWrapping="Wrap" Text="0%" VerticalAlignment="Top"/>
         <ComboBox x:Name="cbSalida" HorizontalAlignment="Left" Margin="250,70,0,0" VerticalAlignment="Top" Width="226"/>
+        <TextBox x:Name="txtDuracionFadeIn" HorizontalAlignment="Left" Height="23" Margin="63,147,0,0" TextWrapping="Wrap" Text="1" VerticalAlignment="Top" Width="120"/>
+        <TextBlock HorizontalAlignment="Left" Margin="76,120,0,0" TextWrapping="Wrap" Text="Duracion Fade In (s):" VerticalAlignment="Top"/>
+        <TextBlock HorizontalAlignment="Left" Margin="259,120,0,0" TextWrapping="Wrap" Text="TextBlock" VerticalAlignment="Top"/>
+        <TextBox x:Name="txtDuracionFadeOut" HorizontalAlignment="Left" Height="23" Margin="250,147,0,0" TextWrapping="Wrap" Text="1" VerticalAlignment="Top" Width="120"/>
+        <Button x:Name="btnFadeOut" Content="Iniciar Fade Out" HorizontalAlignment="Left" Margin="387,157,0,0" VerticalAlignment="Top" Width="75" RenderTransformOrigin="1.043,1.054" Click="Button_Click"/>
 
     </Grid>
 </Window>
